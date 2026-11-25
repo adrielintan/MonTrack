@@ -1,0 +1,18 @@
+services:
+  montrack:
+    build:
+      context: ./montrack-app
+    restart: unless-stopped
+    ports:
+      - "${MONTRACK_PORT:-3001}:3001"
+    environment:
+      NODE_ENV: production
+      PORT: 3001
+      DATA_DIR: /data
+      BOOTSTRAP_ADMIN_EMAIL: ${BOOTSTRAP_ADMIN_EMAIL:?Set BOOTSTRAP_ADMIN_EMAIL in .env}
+      BOOTSTRAP_ADMIN_PASSWORD: ${BOOTSTRAP_ADMIN_PASSWORD:?Set BOOTSTRAP_ADMIN_PASSWORD in .env}
+    volumes:
+      - montrack-data:/data
+
+volumes:
+  montrack-data:

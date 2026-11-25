@@ -1,0 +1,6 @@
+.env
+!.env.example
+montrack-app/data/
+montrack-app/node_modules/
+montrack-app/dist/
+montrack-app/build/
